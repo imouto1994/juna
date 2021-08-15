@@ -1,7 +1,7 @@
 const got = require("got");
 
 const TOKEN =
-  "BQCnRq3t1Nm94I_OXNWgDa2n9Wd68X-zK5w9VjItN4Fh5mOU3SbRe0cpkfpl32-AD7G4RICI-oH3aXwMqIWc1iwDcFLJjdRSAbnLzDlpqeDLvWMkMaTF3uRDClUEHXrJeh6yxjqRfp9J20-6b9GLxm9Ge73jzOoetznQjV-r7WZfebW0dug1EkPFdQRG12tk2OMtM2DsoOMF1Q49vDYLkeKmjgbaGvo3XdMnL6u2x608fSqG_2IKJbQ9lkmcejQGkqLjGwk1tR0IakGCDZJFY1-VZsP92YgPLLGDvKimZIXwWnLt0WEIV7A_";
+  "BQCam3mrQjJBCfhyWDD26iH-6wc7vEH8tixfruvztJgBnd7ifgf_2oscjGuovZo1A-jV7FKKzM_PicWgoPwRhJdPFjdcItiON_MteHL6Rmu4zECpbVVNw4NKM_J_gpC9K_V3wuahRC7Pc90FVdD7trlI9-sU2w-qsL6j2rkuuXztGIuYppicr-NU9Nz0OqcCmHfcsOcnFUtpZ0RY7VSuEALdHdHrldlJOS4DHMcgeRUE2I1R_Rcgh-OgayakW6MD33JFrndzqJdgsTXub_2bgQj-qcgOx7zTPAUipH7my5mucEvVInnAfdaI";
 
 (async () => {
   const tracks = [];
@@ -24,6 +24,7 @@ const TOKEN =
       map[track.name] = [];
       map[track.name].push(track);
     } else {
+      console.log("Same name...", track.name, map[track.name].length);
       let hasDuplicate = false;
       for (const existingTrack of map[track.name]) {
         if (existingTrack.artists[0].name === track.artists[0].name) {
@@ -31,7 +32,7 @@ const TOKEN =
         }
       }
       if (hasDuplicate) {
-        console.log("Found duplicate", track.name, track.artists[0].name);
+        console.log("Found duplicate!", track.name, track.artists[0].name);
       } else {
         map[track.name].push(track);
       }
